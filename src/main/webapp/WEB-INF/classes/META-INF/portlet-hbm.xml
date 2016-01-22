@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.jhu.cvrg.portal.guidgenerator.model.Study" />
+	<import class="com.jhu.cvrg.portal.guidgenerator.model.Site" />
+	<import class="com.jhu.cvrg.portal.guidgenerator.model.StudySite" />
+	<import class="com.jhu.cvrg.portal.guidgenerator.model.SubjectHash" />
+	<class name="com.jhu.cvrg.portal.guidgenerator.model.impl.StudyImpl" table="JHU_Study">
+		<cache usage="read-write" />
+		<id name="studyId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="studyAcronym" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="studyName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.jhu.cvrg.portal.guidgenerator.model.impl.SiteImpl" table="JHU_Site">
+		<cache usage="read-write" />
+		<id name="siteId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="siteAcronym" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="siteName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.jhu.cvrg.portal.guidgenerator.model.impl.StudySiteImpl" table="JHU_StudySite">
+		<cache usage="read-write" />
+		<id name="studySiteId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="studyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="siteId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="linkingDirection" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+	<class name="com.jhu.cvrg.portal.guidgenerator.model.impl.SubjectHashImpl" table="JHU_SubjectHash">
+		<cache usage="read-write" />
+		<id name="subjectHashId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="subjectHashValue" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

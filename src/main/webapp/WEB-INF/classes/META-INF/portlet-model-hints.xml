@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<model-hints>
+	<model name="com.jhu.cvrg.portal.guidgenerator.model.Study">
+		<field name="studyId" type="long" />
+		<field name="studyAcronym" type="String" />
+		<field name="studyName" type="String" />
+	</model>
+	<model name="com.jhu.cvrg.portal.guidgenerator.model.Site">
+		<field name="siteId" type="long" />
+		<field name="siteAcronym" type="String" />
+		<field name="siteName" type="String" />
+	</model>
+	<model name="com.jhu.cvrg.portal.guidgenerator.model.StudySite">
+		<field name="studySiteId" type="long" />
+		<field name="studyId" type="long" />
+		<field name="siteId" type="long" />
+		<field name="linkingDirection" type="int" />
+	</model>
+	<model name="com.jhu.cvrg.portal.guidgenerator.model.SubjectHash">
+		<field name="subjectHashId" type="long" />
+		<field name="subjectHashValue" type="String" />
+	</model>
+</model-hints>

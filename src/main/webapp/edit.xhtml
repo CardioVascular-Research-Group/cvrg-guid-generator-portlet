@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:aui="http://portletfaces.org/alloyfaces/aui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ice="http://www.icesoft.com/icefaces/component">
+	<h:head />
+	<h:body>
+		<aui:form>
+			<aui:layout>
+				<ice:panelTabSet id="tabs">
+<!-- Available Sites and Studies Tab -->
+					<ice:panelTab label="Available Sites and Studies">
+						<ice:panelGrid columns="3" style="cellspacing:5px;">
+
+							<ice:panelGrid columns="1">
+								<ice:outputText value="Current Studies" />
+								<ice:selectOneListbox id="studyItem"
+									style="width:150px; height:150px;"
+									value="#{guidEditBacking.currentStudy}">
+									<f:selectItems id="studyItems" value="#{guidEditBacking.studyList}" />
+								</ice:selectOneListbox>
+							</ice:panelGrid>
+
+							<ice:panelGrid columns="1" style="border:2px;">
+								<ice:outputText value="Current Sites" />
+								<ice:selectOneListbox style="width:150px; height:150px;"
+									value="#{guidEditBacking.currentSite}">
+									<f:selectItems id="siteList" value="#{guidEditBacking.siteList}" />
+								</ice:selectOneListbox>
+							</ice:panelGrid>
+
+
+							<ice:panelGrid columns="3">
+								<ice:outputText value="Add New:" />
+								<ice:panelGrid columns="2">
+									<ice:selectOneRadio value="#{guidEditBacking.siteorstudy}">
+										<f:selectItem id="radioStudy" itemLabel="Study" itemValue="1" />
+										<f:selectItem id="radioSite" itemLabel="Site" itemValue="2" />
+									</ice:selectOneRadio>
+								</ice:panelGrid>
+								<ice:outputText />
+
+								<ice:outputText value="Acronym" />
+								<ice:inputText id="txtAcronym" required="true"
+									value="#{guidEditBacking.newacronym}" />
+								<ice:message for="txtAcronym" />
+								<ice:outputText value="Name" />
+								<ice:inputText id="txtNewName" required="true"
+									value="#{guidEditBacking.newname}" />
+								<ice:message for="txtNewName" />
+								<ice:outputText />
+								<ice:commandButton id="btnAdd"
+									actionListener="#{guidEditBacking.add}" name="addButton"
+									type="submit" value="Add" />
+							</ice:panelGrid>
+						</ice:panelGrid>
+					</ice:panelTab>
+
+<!-- Study/Site Links Tab -->
+
+					<ice:panelTab label="Study/Site Links">
+						<ice:panelGrid columns="4"
+							style="align:top; border:2px; cellpadding:5;">
+							<ice:outputText style="align:top;" value="Available Sites:" />
+							<ice:outputText />
+							<ice:outputText style="align:top;" value="Available Studies:" />
+							<ice:outputText style="align:top;" value="Current Links:" />
+
+							<ice:selectOneListbox id="siteToLink"
+								style="align:top; width:150px; height:150px;"
+								value="#{guidEditBacking.selectedSite}">
+								<f:selectItems id="linkSiteItems" value="#{guidEditBacking.siteList}" />
+							</ice:selectOneListbox>
+
+							<ice:commandButton actionListener="#{guidEditBacking.link}"
+								value="Link" />
+
+							<ice:selectOneListbox id="studyItemLink"
+								style="align:top; width:150px; height:150px;"
+								value="#{guidEditBacking.selectedStudy}">
+								<f:selectItems id="linkStudyItems" value="#{guidEditBacking.studyList}" />
+							</ice:selectOneListbox>
+
+
+							<ice:selectOneListbox id="currentLinks"
+								style="align:top; width:150px; height:150px;">
+								<f:selectItems id="currentLinkList"
+									value="#{guidEditBacking.currentLinks}" />
+							</ice:selectOneListbox>
+						</ice:panelGrid>
+
+						<ice:commandButton actionListener="#{guidEditBacking.commit}"
+							value="Update" />
+						<ice:outputText rendered="#{guidEditBacking.updatecomplete}"
+							value="Update Complete." />
+						<h:messages />
+
+					</ice:panelTab>
+				</ice:panelTabSet>
+			</aui:layout>
+		</aui:form>
+	</h:body>
+</f:view>

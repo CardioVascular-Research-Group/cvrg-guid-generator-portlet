@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.jhu.cvrg.portal.guidgenerator.model.impl.StudyModelImpl">
+		<attributes>
+			<id name="studyId" />
+			<basic name="studyAcronym" />
+			<basic name="studyName" />
+			<transient name="primaryKey" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.jhu.cvrg.portal.guidgenerator.model.impl.SiteModelImpl">
+		<attributes>
+			<id name="siteId" />
+			<basic name="siteAcronym" />
+			<basic name="siteName" />
+			<transient name="primaryKey" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.jhu.cvrg.portal.guidgenerator.model.impl.StudySiteModelImpl">
+		<attributes>
+			<id name="studySiteId" />
+			<basic name="studyId" />
+			<basic name="siteId" />
+			<basic name="linkingDirection" />
+			<transient name="primaryKey" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.jhu.cvrg.portal.guidgenerator.model.impl.SubjectHashModelImpl">
+		<attributes>
+			<id name="subjectHashId" />
+			<basic name="subjectHashValue" />
+			<transient name="primaryKey" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.jhu.cvrg.portal.guidgenerator.model.impl.StudyImpl" name="Study">
+		<table name="JHU_Study" />
+		<attributes />
+	</entity>
+	<entity class="com.jhu.cvrg.portal.guidgenerator.model.impl.SiteImpl" name="Site">
+		<table name="JHU_Site" />
+		<attributes />
+	</entity>
+	<entity class="com.jhu.cvrg.portal.guidgenerator.model.impl.StudySiteImpl" name="StudySite">
+		<table name="JHU_StudySite" />
+		<attributes />
+	</entity>
+	<entity class="com.jhu.cvrg.portal.guidgenerator.model.impl.SubjectHashImpl" name="SubjectHash">
+		<table name="JHU_SubjectHash" />
+		<attributes />
+	</entity>
+</entity-mappings>

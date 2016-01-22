@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.StudyLocalService" class="com.jhu.cvrg.portal.guidgenerator.service.impl.StudyLocalServiceImpl" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.StudyLocalServiceUtil" class="com.jhu.cvrg.portal.guidgenerator.service.StudyLocalServiceUtil">
+		<property name="service" ref="com.jhu.cvrg.portal.guidgenerator.service.StudyLocalService" />
+	</bean>
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.persistence.StudyPersistence" class="com.jhu.cvrg.portal.guidgenerator.service.persistence.StudyPersistenceImpl" parent="basePersistence" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.SiteLocalService" class="com.jhu.cvrg.portal.guidgenerator.service.impl.SiteLocalServiceImpl" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.SiteLocalServiceUtil" class="com.jhu.cvrg.portal.guidgenerator.service.SiteLocalServiceUtil">
+		<property name="service" ref="com.jhu.cvrg.portal.guidgenerator.service.SiteLocalService" />
+	</bean>
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.persistence.SitePersistence" class="com.jhu.cvrg.portal.guidgenerator.service.persistence.SitePersistenceImpl" parent="basePersistence" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.StudySiteLocalService" class="com.jhu.cvrg.portal.guidgenerator.service.impl.StudySiteLocalServiceImpl" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.StudySiteLocalServiceUtil" class="com.jhu.cvrg.portal.guidgenerator.service.StudySiteLocalServiceUtil">
+		<property name="service" ref="com.jhu.cvrg.portal.guidgenerator.service.StudySiteLocalService" />
+	</bean>
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.persistence.StudySitePersistence" class="com.jhu.cvrg.portal.guidgenerator.service.persistence.StudySitePersistenceImpl" parent="basePersistence" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.SubjectHashLocalService" class="com.jhu.cvrg.portal.guidgenerator.service.impl.SubjectHashLocalServiceImpl" />
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.SubjectHashLocalServiceUtil" class="com.jhu.cvrg.portal.guidgenerator.service.SubjectHashLocalServiceUtil">
+		<property name="service" ref="com.jhu.cvrg.portal.guidgenerator.service.SubjectHashLocalService" />
+	</bean>
+	<bean id="com.jhu.cvrg.portal.guidgenerator.service.persistence.SubjectHashPersistence" class="com.jhu.cvrg.portal.guidgenerator.service.persistence.SubjectHashPersistenceImpl" parent="basePersistence" />
+</beans>

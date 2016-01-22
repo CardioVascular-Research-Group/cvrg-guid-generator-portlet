@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:aui="http://portletfaces.org/alloyfaces/aui"
+		xmlns:aui-cc="http://portletfaces.org/alloyfaces/aui-cc"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ice="http://www.icesoft.com/icefaces/component"
+		xmlns:icecore="http://www.icefaces.org/icefaces/core">
+	<h:head />
+	<h:body>
+		<h:outputText id="lblRequired" value="Fields marked with " />
+		<h:outputText style="color:red; width:5px;" value="*" />
+		<h:outputText id="lblRequired2" value="are required." />
+		<aui:form id="mainForm">
+		<aui:layout>
+			<icecore:singleSubmit>
+				<ice:panelGrid id="mainGrid" columns="4">
+
+					<ice:outputText style="width:5px;" />
+					<ice:outputText id="lblStudy" value="Study" />
+					<ice:selectOneMenu id="menuStudy" immediate="true" value="#{guidViewBacking.selectedStudy}"
+						valueChangeListener="#{guidViewBacking.selectedStudyChanged}">
+						<f:selectItem id="defaultStudy" itemLabel="Select a study..." itemValue="0" />
+						<f:selectItems id="studyItems" value="#{guidViewBacking.studyList}" />
+						<f:validator validatorId="com.jhu.cvrg.portal.resourcerequest.validators.GuidValidator" />
+					</ice:selectOneMenu>
+					<ice:message for="menuStudy"/>
+
+					<ice:outputText style="width:5px;" />
+					<ice:outputText id="lblSite" value="Site" />
+					<ice:selectOneMenu id="menuSite" value="#{guidViewBacking.selectedSite}">
+						<f:selectItem id="defaultSite" itemLabel="Select a site..."	itemValue="0" />
+						<f:selectItems id="siteList" value="#{guidViewBacking.siteList}" />
+						<f:validator validatorId="com.jhu.cvrg.portal.resourcerequest.validators.GuidValidator" />
+					</ice:selectOneMenu>
+					<ice:message for="menuSite"/>
+
+					<ice:outputText style="color:red; width:5px;" value="*" />
+					<ice:outputText id="lblLastName" value="Last Name" />
+					<ice:inputText id="txtLastName" required="true" value="#{guidViewBacking.lastname}" />
+					<ice:message for="txtLastName"/>
+
+					<ice:outputText style="color:red; width:5px;" value="*" />
+					<ice:outputText id="lblFirstName" value="First Name" />
+					<ice:inputText id="txtFirstName" required="true" value="#{guidViewBacking.firstname}" />
+					<ice:message for="txtFirstName"/>
+
+					<ice:outputText style="color:red; width:5px;" value="*" />
+					<ice:outputText id="lblGender" value="Gender" />
+					<ice:selectOneMenu id="menuGender" value="#{guidViewBacking.gender}">
+						<f:selectItem id="maleItem" itemLabel="Male" itemValue="1" />
+						<f:selectItem id="femaleItem" itemLabel="Female" itemValue="2" />
+					</ice:selectOneMenu>
+					<ice:outputText/>
+
+					<ice:outputText style="color:red; width:5px;" value="*" />
+					<ice:outputText id="lblDoB" value="Date of Birth" />
+					<ice:inputText id="txtDOB" required="true" value="#{guidViewBacking.dob}">
+						<f:validateRegex pattern="^\d{1,2}\/\d{1,2}\/\d{4}$"/>
+					</ice:inputText>
+					<ice:message for="txtDOB"/>
+
+					<ice:outputText style="color:red; width:5px;" value="*" />
+					<ice:outputText id="lblMothersMaidenName" value="Mother's Maiden Name" />
+					<ice:inputText id="txtMaidenName" required="true" value="#{guidViewBacking.maidenname}" />
+					<ice:message for="txtMaidenName"/>
+					
+				</ice:panelGrid>
+				</icecore:singleSubmit>
+				<f:verbatim><hr/></f:verbatim>
+				<ice:commandButton actionListener="#{guidViewBacking.generate}" id="find" type="submit" value="Get Subject Id"/>
+
+			
+			<ice:panelGrid columns="2">
+						<ice:outputText rendered="#{guidViewBacking.gotGuid}" style="font-size:large;" value="Subject Id:" />
+						<ice:outputText id="outGuid" style="font-size:large; border-width: 1px;"
+							rendered="#{guidViewBacking.gotGuid}"
+							value="#{guidViewBacking.acrostic}" />
+				</ice:panelGrid>
+				</aui:layout>
+		</aui:form>
+		</h:body>
+</f:view>

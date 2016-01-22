@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.0.0//EN"
+"http://www.liferay.com/dtd/liferay-service-builder_6_0_0.dtd">
+<service-builder package-path="com.jhu.cvrg.portal.guidgenerator">
+	<author>Chris Jurado</author>
+	<namespace>JHU</namespace>
+	<entity name="Study" local-service="true" remote-service="false">
+		<column name="studyId" type="long" primary="true" />
+		<column name="studyAcronym" type="String" />
+		<column name="studyName" type="String" />
+
+		<finder name="StudyName" return-type="Collection">
+			<finder-column name="studyName" />
+		</finder>
+		
+		<finder name="StudyAcronym" return-type="Collection">
+			<finder-column name="studyAcronym" />
+		</finder>
+		
+	</entity>
+	
+	<entity name="Site" local-service="true" remote-service="false">
+		<column name="siteId" type="long" primary="true" />
+		<column name="siteAcronym" type="String"/>
+		<column name="siteName" type="String" />
+
+		<finder name="SiteName" return-type="Collection">
+			<finder-column name="siteName" />
+		</finder>
+		
+		<finder name="SiteAcronym" return-type="Collection">
+			<finder-column name="siteAcronym" />
+		</finder>
+	</entity>
+	
+	<entity name="StudySite" local-service="true" remote-service="false">
+		<column name="studySiteId" type="long" primary="true" />
+		<column name="studyId" type="long"/>
+		<column name="siteId" type="long"/>
+		<column name="linkingDirection" type="int"/>
+
+		<finder name="SiteId" return-type="Collection">
+			<finder-column name="siteId" />
+		</finder>
+
+		<finder name="StudyId" return-type="Collection">
+			<finder-column name="studyId" />
+		</finder>
+		
+	</entity>
+	
+	<entity name="SubjectHash" local-service="true" remote-service="false">
+		<column name="subjectHashId" type="long" primary="true" />
+		<column name="subjectHashValue" type="String"/>
+		
+		<finder name="SubjectHashValue" return-type="Collection">
+			<finder-column name="subjectHashValue" />
+		</finder>
+
+		
+	</entity>
+</service-builder>
